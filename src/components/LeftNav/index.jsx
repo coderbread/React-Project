@@ -1,10 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link, withRouter } from 'react-router-dom'
 import './index.less'
-import { Link } from 'react-router-dom'
+import menuList from '../../config/menuConfig'
+//第三方库
 import { Menu, Icon } from 'antd'
 const { SubMenu } = Menu
 
-export default function LeftNav() {
+function LeftNav(props) {
+  const path = props.location.pathname
+  const [menuNodes] = useState(function getInitialState() {
+    return getMenuNodes_reduce(menuList)
+  })
+  //根据menuConfig的数据数组生成对应的标签数组
+  function getMenuNodes_reduce(menuList) {
+    return menuList.reduce((pre, item) => {
+      if (item.children) {
+        const childItem = item.children.find(childItem => childItem.key === path)
+        if (childItem) {
+          props.match.openKey = item.key
+        }
+        pre.push((
+          <SubMenu
+            key={item.key}
+            title={
+              <span>
+                <Icon type={item.icon} />
+                <span>{item.title}</span>
+              </span>
+            }
+          >
+            {getMenuNodes_reduce(item.children)}
+          </SubMenu>
+        ))
+      } else {
+        pre.push((
+          <Menu.Item key={item.key}>
+            <Link to={item.key}>
+              <Icon type={item.icon} />
+              <span>{item.title}</span>
+            </Link>
+          </Menu.Item>
+        ))
+      }
+      return pre
+    }, [])
+  }
+
   return (
     <div className="left-nav">
       <Link to='/' className="left-nav-header">
@@ -13,56 +54,18 @@ export default function LeftNav() {
       </Link>
       <div style={{ width: '100%' }}>
         <Menu
-          defaultSelectedKeys={['1']}
-          defaultOpenKeys={['sub1']}
+          selectedKeys={[path]}
+          defaultOpenKeys={[props.match.openKey]}
           mode="inline"
           theme="dark"
         >
-          <Menu.Item key="1">
-            <Icon type="pie-chart" />
-            <span>首页</span>
-          </Menu.Item>
-          <SubMenu
-            key="sub1"
-            title={
-              <span>
-                <Icon type="mail" />
-                <span>商品</span>
-              </span>
-            }
-          >
-            <Menu.Item key="1">
-              <Icon type="mail" />
-              <span>品类管理</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Icon type="mail" />
-              <span>商品管理</span>
-            </Menu.Item>
-          </SubMenu>
-          <Menu.Item key="2">
-            <Icon type="pie-chart" />
-            <span>用户</span>
-          </Menu.Item>
-          <SubMenu
-            key="sub2"
-            title={
-              <span>
-                <Icon type="appstore" />
-                <span>数据图</span>
-              </span>
-            }
-          >
-            <Menu.Item key="9">Option 9</Menu.Item>
-            <Menu.Item key="10">Option 10</Menu.Item>
-            <SubMenu key="sub3" title="Submenu">
-              <Menu.Item key="11">Option 11</Menu.Item>
-              <Menu.Item key="12">Option 12</Menu.Item>
-            </SubMenu>
-          </SubMenu>
+          {
+            menuNodes
+          }
         </Menu>
       </div>
     </div>
   )
 }
+export default withRouter(LeftNav)
 
