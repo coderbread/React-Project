@@ -1,0 +1,9 @@
+{
+  "plugins": [
+    ["import", {//按需加载和打包antd
+      "libraryName": "antd",
+      "libraryDirectory": "es",
+      "style": "css" // `style: true` 会加载 less 文件
+    }]
+  ]
+}
