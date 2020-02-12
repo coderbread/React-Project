@@ -31,7 +31,7 @@ export default class Home extends Component {
         </Sider>
         <Layout>
           <Header />
-          <Content style={{ backgroundColor: '#fff' }}>
+          <Content style={{ margin: 16, backgroundColor: '#fff' }}>
             <Switch>
               <Route path='/begin' component={Begin} />
               <Route path='/category' component={Category} />

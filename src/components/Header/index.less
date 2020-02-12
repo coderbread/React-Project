@@ -1,0 +1,58 @@
+.header {
+  height: 80px;
+  background-color: #fff;
+
+  .header-top {
+    height: 40px;
+    line-height: 40px;
+    padding-right: 30px;
+    text-align: right;
+    border-bottom: 1.6px solid #1890ff;
+
+    span {
+      margin-right: 12px;
+    }
+
+    .tuichu-icon {
+      color: #1890ff;
+      margin-left: 8px;
+      margin-right: 2px;
+    }
+  }
+
+  .header-bottom {
+    height: 40px;
+    display: flex;
+    align-items: center;
+
+    .left {
+      position: relative;
+      width: 15%;
+      text-align: center;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 50%;
+        transform: translateX(50%);
+        top: 120%;
+        border-top: 18px solid #fff;
+        border-right: 18px solid transparent;
+        border-bottom: 18px solid transparent;
+        border-left: 18px solid transparent;
+      }
+    }
+
+    .right {
+      width: 85%;
+      text-align: right;
+      padding-right: 30px;
+
+      img {
+        width: 18px;
+        height: 22px;
+        margin: 0 16px;
+      }
+    }
+  }
+}
