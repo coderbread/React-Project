@@ -7,16 +7,19 @@
     line-height: 40px;
     padding-right: 30px;
     text-align: right;
-    border-bottom: 1.6px solid #1890ff;
+    border-bottom: 1.4px solid #ccc;
 
-    span {
+    .welcome {
       margin-right: 12px;
     }
 
-    .tuichu-icon {
+    .tuichu {
       color: #1890ff;
-      margin-left: 8px;
-      margin-right: 2px;
+      cursor: pointer;
+      .tuichu-icon {
+        margin-left: 8px;
+        margin-right: 2px;
+      }
     }
   }
 
@@ -29,6 +32,12 @@
       position: relative;
       width: 15%;
       text-align: center;
+      font-size: 16px;
+
+      &::before {
+        content: '';
+        border-left: 3px solid #1890ff;
+      }
 
       &::after {
         content: '';
@@ -48,10 +57,10 @@
       text-align: right;
       padding-right: 30px;
 
-      img {
-        width: 18px;
-        height: 22px;
-        margin: 0 16px;
+      .tianqi-icon {
+        font-size: 16px;
+        line-height: 40px;
+        margin: 0 4px 0 16px;
       }
     }
   }

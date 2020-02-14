@@ -29,7 +29,7 @@ export default class Home extends Component {
         <Sider>
           <LeftNav />
         </Sider>
-        <Layout>
+        <Layout style={{ minWidth: 700 }}>
           <Header />
           <Content style={{ margin: 16, backgroundColor: '#fff' }}>
             <Switch>

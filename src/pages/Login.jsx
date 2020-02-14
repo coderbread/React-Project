@@ -15,12 +15,10 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
-      console.log(err)
       if (!err) {
         const { username, password } = values
         reqLogin(username, password)
           .then(response => {
-            console.log(response)
             const result = response.data
             if(result.status === 0){ //登录成功
               const user = result.data

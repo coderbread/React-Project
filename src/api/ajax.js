@@ -4,7 +4,7 @@ import { message } from 'antd'
 //封装异步请求
 export default function ajax(url, data = {}, type = 'GET') {
   //统一处理请求异常
-  return new Promise((res, rej) => {
+  return new Promise((resolve, rej) => {
     let promise
     if (type === 'POST') {
       promise = axios.post(url, data)
@@ -14,7 +14,7 @@ export default function ajax(url, data = {}, type = 'GET') {
       })
     }
     promise.then(value => {
-      res(value)
+      resolve(value)
     }, error => {
       message.error('请求出错了！' + error.message)
     })
