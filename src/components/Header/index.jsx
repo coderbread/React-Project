@@ -17,10 +17,10 @@ function Header(props) {
   const timerRef = useRef()
 
   useEffect(() => {
-    // getTime()
-    // return () => {
-    //   timerRef.current && clearInterval(timerRef.current)
-    // }
+    getTime()
+    return () => {
+      timerRef.current && clearInterval(timerRef.current)
+    }
   }, [])
 
   useEffect(() => {

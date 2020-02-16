@@ -5,7 +5,7 @@ const menuList = [{
     isPublic: true, // 公开的
   },
   {
-    title: '商品',
+    title: '商品图书',
     key: '/products',
     icon: 'appstore',
     children: [ // 子菜单列表
@@ -15,7 +15,7 @@ const menuList = [{
         icon: 'bars'
       },
       {
-        title: '商品管理',
+        title: '书目管理',
         key: '/product',
         icon: 'tool'
       },

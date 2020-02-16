@@ -17,7 +17,7 @@ export const reqCategories = (parentId) => ajax('/manage/category/list', { paren
 //7.添加分类
 export const reqAddCategory = (parentId, categoryName) => ajax('/manage/category/add', { parentId, categoryName }, 'POST')
 //8.更新分类名
-export const reqUpdateCategory = (parentId, categoryName) => ajax('/manage/category/update', { parentId, categoryName }, 'POST')
+export const reqUpdateCategory = (categoryId, categoryName) => ajax('/manage/category/update', { categoryId, categoryName }, 'POST')
 //x.jsonp 获取天气信息
 export const reqWeather = (city) => ajax(
     `https://free-api.heweather.net/s6/weather/now?location=${city}&key=747f2766f2104f80a97593f6dce69a49`
