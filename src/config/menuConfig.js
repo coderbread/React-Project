@@ -1,6 +1,6 @@
 const menuList = [{
     title: '首页', // 菜单标题名称
-    key: '/begin', // 对应的path
+    key: '/home', // 对应的path
     icon: 'home', // 图标名称
     isPublic: true, // 公开的
   },
@@ -52,12 +52,6 @@ const menuList = [{
         icon: 'pie-chart'
       },
     ]
-  },
-
-  {
-    title: '订单管理',
-    key: '/order',
-    icon: 'windows',
   },
 ]
 

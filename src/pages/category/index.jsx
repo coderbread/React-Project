@@ -28,13 +28,13 @@ function Category(props) {
     setParentName(category.name)
     setParentId(category._id)
   }
-  async function getCategories(_id) {
+  async function getCategories(parentId) {
     setIsLoading(true)
-    const response = await reqCategories(_id)
+    const response = await reqCategories(parentId)
     setIsLoading(false)
     if (response.status === 200) {
       const result = response.data.data
-      if (_id === '0') {
+      if (parentId === '0') {
         setCategories(result)
       } else {
         setSubCategories(result)
@@ -56,6 +56,7 @@ function Category(props) {
       if(!err){
         setConfirmLoading(true)
         const { parentId, categoryName } = values
+        props.form.resetFields()//清除掉input里的默认值
         await reqAddCategory(parentId, categoryName)
         setTimeout(() => {
           if (parentId === state[0]) {
@@ -109,13 +110,11 @@ function Category(props) {
     {
       title: '分类名',
       dataIndex: 'name',
-      key: 'name',
     },
     {
       title: '分类操作',
       width: '360px',
       dataIndex: '',
-      key: 'action',
       render: (category) => (
         <div>
           <Button 

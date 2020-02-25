@@ -29,11 +29,11 @@ export default class Home extends Component {
         <Sider>
           <LeftNav />
         </Sider>
-        <Layout style={{ minWidth: 700 }}>
+        <Layout style={{ minWidth: 1100 }}>
           <Header />
           <Content style={{ margin: 16, backgroundColor: '#fff' }}>
             <Switch>
-              <Route path='/begin' component={Begin} />
+              <Route path='/home' component={Begin} />
               <Route path='/category' component={Category} />
               <Route path='/product' component={Product} />
               <Route path='/user' component={User} />
@@ -41,7 +41,7 @@ export default class Home extends Component {
               <Route path="/charts/bar" component={Bar} />
               <Route path="/charts/pie" component={Pie} />
               <Route path="/charts/line" component={Line} />
-              <Redirect to='/begin' />
+              <Redirect to='/home' />
             </Switch>
           </Content>
           <Footer style={{ textAlign: 'center', color: '#ccc' }}>推荐使用谷歌浏览器，以获得更好的使用体验</Footer>

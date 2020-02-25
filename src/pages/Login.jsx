@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 
-import { Form, Icon, Input, Button, message} from 'antd'
+import { Form, Icon, Input, Button, message } from 'antd'
 import './login.less'
 
 import { reqLogin } from '../api'
@@ -11,7 +11,7 @@ import storage from '../utils/storage'
 
 //the component of Login
 class Login extends Component {
-  
+
   handleSubmit = e => {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
@@ -20,7 +20,7 @@ class Login extends Component {
         reqLogin(username, password)
           .then(response => {
             const result = response.data
-            if(result.status === 0){ //登录成功
+            if (result.status === 0) { //登录成功
               const user = result.data
               memory.user = user //保存user到内存中
               storage.saveUser(user) //保存到系统local中

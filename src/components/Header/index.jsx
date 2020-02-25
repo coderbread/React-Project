@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { withRouter } from 'react-router-dom'
 import './index.less'
 import menuList from '../../config/menuConfig'
-import dataFormat from '../../utils/dataFormat'
+import dataFormat from '../../utils/dateFormat'
 import memory from '../../utils/memory'
 import storage from '../../utils/storage'
 import { reqWeather } from '../../api'
@@ -40,7 +40,7 @@ function Header(props) {
       if (item.key === path) {
         title = item.title
       } else if (item.children) {
-        const cItem = item.children.find(cItem => cItem.key === path)
+        const cItem = item.children.find(cItem => path.indexOf(cItem.key) === 0)
         if (cItem) {
           title = cItem.title
         }
